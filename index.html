@@ -1,115 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-    body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #87CEEB, #ffffff); /* sky blue + white */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Form Box */
-form{
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    width: 400px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #87CEEB, #ffffff);
 }
 
-/* Heading */
-h1, h2{
-    text-align: center;
-    color: #0096c7;
+/* Form Card */
+.container {
+  width: 90%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* Labels */
-label{
-    font-weight: bold;
-    color: #333;
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 /* Inputs */
-input, select, textarea{
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 15px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    transition: 0.3s;
+.input-box {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
-/* Focus Effect */
-input:focus, select:focus, textarea:focus{
-    outline: none;
-    border: 2px solid #00b4d8;
-    box-shadow: 0 0 8px rgba(0,180,216,0.4);
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 5px rgba(0,191,255,0.5);
+}
+
+/* Password eye */
+.password-box {
+  position: relative;
+}
+
+.password-box span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Gender */
+.gender {
+  margin: 10px 0;
+}
+
+.gender label {
+  margin-right: 10px;
 }
 
 /* Button */
-button{
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(135deg, #00b4d8, #48cae4);
-    transition: 0.3s;
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #00bfff, #87cefa);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Hover Effect */
-button:hover{
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,180,216,0.5);
+button:hover {
+  opacity: 0.9;
 }
-    </style>
-    <meta charset="UTF-8">
-    <title>Registration Form</title>
+</style>
+
 </head>
 <body>
 
-    <h2>Registration Form</h2>
+<div class="container">
+  <h2>Register</h2>
 
-    <form>
+  <div class="input-box">
+    <input type="text" placeholder="Full Name">
+  </div>
 
-        <!-- Full Name -->
-        <label for="name">Full Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+  <div class="input-box">
+    <input type="email" placeholder="Email">
+  </div>
 
-        <!-- Email -->
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+  <div class="input-box password-box">
+    <input type="password" id="password" placeholder="Password">
+    <span onclick="togglePassword()">👁️</span>
+  </div>
 
-        <!-- Password -->
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+  <div class="gender">
+    <label><input type="radio" name="gender"> Male</label>
+    <label><input type="radio" name="gender"> Female</label>
+    <label><input type="radio" name="gender"> Other</label>
+  </div>
 
-        <!-- Gender -->
-        <label>Gender:</label><br>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label><br>
+  <div class="input-box">
+    <select>
+      <option>Course / Interest</option>
+      <option>Web Development</option>
+      <option>App Development</option>
+      <option>AI / ML</option>
+    </select>
+  </div>
 
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label><br><br>
+  <button>Create Account</button>
+</div>
 
-        <!-- Course Dropdown -->
-        <label for="course">Course/Interest:</label><br>
-        <select id="course" name="course">
-            <option value="web">Web Development</option>
-            <option value="ai">Artificial Intelligence</option>
-            <option value="data">Data Science</option>
-            <option value="design">UI/UX Design</option>
-        </select><br><br>
-
-        <!-- Submit Button -->
-        <button type="submit">Submit</button>
-
-    </form>
+<script>
+function togglePassword() {
+  let pass = document.getElementById("password");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
+</script>
 
 </body>
 </html>
