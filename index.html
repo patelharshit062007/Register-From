@@ -6,103 +6,65 @@
 <title>Registration Form</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 body {
-  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #e6f2ff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #87CEEB, #ffffff);
+  height: 100vh;
 }
 
-/* Form Card */
 .container {
-  width: 90%;
-  max-width: 400px;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Inputs */
-.input-box {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.input-box input,
-.input-box select {
-  width: 100%;
-  padding: 12px;
+  background: white;
+  padding: 30px;
   border-radius: 10px;
-  border: 1px solid #ccc;
-  outline: none;
-  transition: 0.3s;
+  width: 350px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.input-box input:focus,
-.input-box select:focus {
-  border-color: #00bfff;
-  box-shadow: 0 0 5px rgba(0,191,255,0.5);
+h2 {
+  text-align: center;
+  color: #007acc;
 }
 
-/* Error */
-.error {
-  color: red;
-  font-size: 13px;
-  display: none;
-}
-
-/* Password eye */
-.password-box {
-  position: relative;
-}
-
-.password-box span {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-/* Gender */
-.gender {
+input {
+  width: 100%;
+  padding: 10px;
   margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-/* Button */
+input:invalid {
+  border-color: red;
+}
+
+input:valid {
+  border-color: green;
+}
+
 button {
   width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #00bfff, #87cefa);
+  padding: 10px;
+  background: #007acc;
   color: white;
-  font-size: 16px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 button:hover {
-  opacity: 0.9;
+  background: #005f99;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
 }
 </style>
-
 </head>
+
 <body>
 
 <div class="container">
@@ -110,78 +72,37 @@ button:hover {
 
   <form id="form">
 
-    <div class="input-box">
-      <input type="text" id="name" placeholder="Enter your full name" required>
-      <div class="error" id="nameError">Name is required</div>
-    </div>
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" required>
 
-    <div class="input-box">
-      <input type="email" id="email" placeholder="Enter your email" required>
-      <div class="error" id="emailError">Valid email required</div>
-    </div>
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
 
-    <div class="input-box password-box">
-      <input type="password" id="password" placeholder="Enter password" required minlength="6">
-      <span onclick="togglePassword()">👁️</span>
-      <div class="error" id="passError">Min 6 characters required</div>
-    </div>
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter password" required minlength="6">
 
-    <div class="gender">
-      <label><input type="radio" name="gender" required> Male</label>
-      <label><input type="radio" name="gender"> Female</label>
-      <label><input type="radio" name="gender"> Other</label>
-    </div>
+    <label>Confirm Password</label>
+    <input type="password" id="confirmPassword" placeholder="Confirm password" required>
 
-    <div class="input-box">
-      <select required>
-        <option value="">Select Course</option>
-        <option>Web Development</option>
-        <option>App Development</option>
-        <option>AI / ML</option>
-      </select>
-    </div>
+    <p class="error" id="errorMsg"></p>
 
     <button type="submit">Register Now</button>
-
   </form>
 </div>
 
 <script>
-function togglePassword() {
-  let pass = document.getElementById("password");
-  pass.type = pass.type === "password" ? "text" : "password";
-}
+const form = document.getElementById("form");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+const errorMsg = document.getElementById("errorMsg");
 
-document.getElementById("form").addEventListener("submit", function(e) {
-  let valid = true;
-
-  let name = document.getElementById("name");
-  let email = document.getElementById("email");
-  let password = document.getElementById("password");
-
-  if (name.value.trim() === "") {
-    document.getElementById("nameError").style.display = "block";
-    valid = false;
-  } else {
-    document.getElementById("nameError").style.display = "none";
-  }
-
-  if (!email.checkValidity()) {
-    document.getElementById("emailError").style.display = "block";
-    valid = false;
-  } else {
-    document.getElementById("emailError").style.display = "none";
-  }
-
-  if (password.value.length < 6) {
-    document.getElementById("passError").style.display = "block";
-    valid = false;
-  } else {
-    document.getElementById("passError").style.display = "none";
-  }
-
-  if (!valid) {
+form.addEventListener("submit", function(e) {
+  if (password.value !== confirmPassword.value) {
     e.preventDefault();
+    errorMsg.textContent = "Passwords do not match!";
+  } else {
+    errorMsg.textContent = "";
+    alert("Form Submitted Successfully!");
   }
 });
 </script>
