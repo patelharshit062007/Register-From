@@ -3,64 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registration Form</title>
+<title>Premium Registration</title>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #e6f2ff;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background: linear-gradient(135deg, #87CEEB, #ffffff);
 }
 
+/* Container */
 .container {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
   width: 350px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-h2 {
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   text-align: center;
-  color: #007acc;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-input:invalid {
-  border-color: red;
-}
-
-input:valid {
-  border-color: green;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background: #007acc;
+/* Dark Mode Button */
+.toggle-btn {
+  background: #0d1b2a;
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 25px;
+  width: 100%;
+  margin-bottom: 15px;
   cursor: pointer;
 }
 
-button:hover {
-  background: #005f99;
+/* Title */
+h2 {
+  margin-bottom: 20px;
+  color: #0d1b2a;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
+/* Input Fields */
+.input-box {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #f1f9ff;
+  font-size: 14px;
+}
+
+/* Eye Button */
+.input-box span {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn {
+  width: 48%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Register Button */
+.register {
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+  color: white;
+}
+
+/* Reset Button */
+.reset {
+  background: #0d1b2a;
+  color: white;
+}
+
+/* DARK MODE */
+.dark {
+  background: #0d1b2a;
+}
+
+.dark .container {
+  background: #1b263b;
+  color: white;
+}
+
+.dark input {
+  background: #415a77;
+  color: white;
 }
 </style>
 </head>
@@ -68,43 +122,42 @@ button:hover {
 <body>
 
 <div class="container">
-  <h2>Register</h2>
+  <button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
 
-  <form id="form">
+  <h2>✨ Premium Registration</h2>
 
-    <label>Full Name</label>
-    <input type="text" id="name" placeholder="Enter your full name" required>
+  <div class="input-box">
+    <input type="text" placeholder="Full Name">
+  </div>
 
-    <label>Email</label>
-    <input type="email" id="email" placeholder="Enter your email" required>
+  <div class="input-box">
+    <input type="email" placeholder="Email">
+  </div>
 
-    <label>Password</label>
-    <input type="password" id="password" placeholder="Enter password" required minlength="6">
+  <div class="input-box">
+    <input type="password" id="password" placeholder="Password">
+    <span onclick="togglePassword()">👁️</span>
+  </div>
 
-    <label>Confirm Password</label>
-    <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+  <div class="input-box">
+    <input type="text" placeholder="Phone Number">
+  </div>
 
-    <p class="error" id="errorMsg"></p>
-
-    <button type="submit">Register Now</button>
-  </form>
+  <div class="btn-group">
+    <button class="btn register">🚀 Register</button>
+    <button class="btn reset">🔄 Reset</button>
+  </div>
 </div>
 
 <script>
-const form = document.getElementById("form");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirmPassword");
-const errorMsg = document.getElementById("errorMsg");
+function togglePassword() {
+  let pass = document.getElementById("password");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
 
-form.addEventListener("submit", function(e) {
-  if (password.value !== confirmPassword.value) {
-    e.preventDefault();
-    errorMsg.textContent = "Passwords do not match!";
-  } else {
-    errorMsg.textContent = "";
-    alert("Form Submitted Successfully!");
-  }
-});
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
 </script>
 
 </body>
