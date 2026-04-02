@@ -1,149 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satic AI - Premium Submission Form</title>
-    
-    <!-- Premium CSS Styles (Merged) -->
-    <style>
-        /* 1. Global Reset & Premium Background */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: radial-gradient(circle at top left, #1e293b, #080c14);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #f8fafc;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ultra Premium Form</title>
 
-        /* 2. Glassmorphism Form Container (Task Step 4 & 6) */
-        .glass-container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            padding: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            width: 90%;
-            max-width: 420px;
-            text-align: center;
-            animation: fadeIn 0.8s ease-out;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,blue,green);
+transition:.4s;
+}
 
-        h2 { margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
-        .accent { color: #10b981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
-        .subtitle { color: #94a3b8; font-size: 0.9rem; margin-bottom: 32px; opacity: 0.8; }
+body.dark{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:#fff;
+}
 
-        /* 3. Input Visual Effects (Task Step 2 & 5) */
-        .input-group {
-            position: relative;
-            margin-bottom: 24px;
-            text-align: left;
-        }
+.container{
+width:380px;
+background:#fff;
+padding:28px;
+border-radius:18px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+animation:fade .6s ease;
+}
 
-        .input-group input {
-            width: 100%;
-            padding: 12px 0;
-            font-size: 1rem;
-            color: #fff;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-            outline: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth Transition */
-        }
+body.dark .container{background:#1e1e1e}
 
-        /* Focus & Polish Highlights (Step 2) */
-        .input-group input:focus {
-            border-bottom-color: #10b981;
-        }
+@keyframes fade{
+from{opacity:0;transform:translateY(25px)}
+to{opacity:1;transform:translateY(0)}
+}
 
-        .input-group label {
-            position: absolute;
-            top: 12px;
-            left: 0;
-            color: #64748b;
-            pointer-events: none;
-            transition: 0.3s ease;
-        }
+h2{text-align:center;margin-bottom:15px}
 
-        /* Floating Label Animation */
-        .input-group input:focus ~ label,
-        .input-group input:not(:placeholder-shown) ~ label {
-            top: -14px;
-            font-size: 0.75rem;
-            color: #10b981;
-            font-weight: 600;
-        }
+label{font-size:13px;font-weight:600}
 
-        /* 4. Button Hover & Scale Effects (Task Step 3) */
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            margin-top: 12px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            border: none;
-            border-radius: 14px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy transition */
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
-        }
+.input-group{margin-bottom:14px;position:relative}
 
-        .submit-btn:hover {
-            transform: scale(1.03); /* Slight scale (Step 3) */
-            box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4); /* Shadow change (Step 3) */
-            filter: brightness(1.1);
-        }
+input,select{
+width:100%;
+padding:11px;
+border-radius:8px;
+border:1px solid #ccc;
+margin-top:4px;
+outline:none;
+transition:.3s;
+}
 
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
-    </style>
+input:focus,select:focus{
+border-color:#0072ff;
+box-shadow:0 0 8px rgba(0,114,255,.3);
+}
+
+.eye{
+position:absolute;
+right:10px;
+top:36px;
+cursor:pointer;
+}
+
+.error{
+color:red;
+font-size:12px;
+display:none;
+}
+
+.strength{
+height:6px;
+border-radius:6px;
+margin-top:5px;
+background:#ddd;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:red;
+transition:.3s;
+}
+
+.buttons{display:flex;gap:10px;margin-top:12px}
+
+button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+color:white;
+transition:.3s;
+}
+
+.submit{background:linear-gradient(45deg,#00c6ff,#0072ff)}
+.reset{background:linear-gradient(45deg,#ffb347,#ffcc33);color:black}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+.darkbtn{
+margin-top:12px;
+width:100%;
+background:linear-gradient(45deg,#232526,#414345);
+}
+
+.success{
+display:none;
+margin-top:12px;
+padding:10px;
+background:#28a745;
+color:white;
+border-radius:8px;
+text-align:center;
+}
+
+.checkbox{
+display:flex;
+gap:8px;
+font-size:13px;
+margin-top:6px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="glass-container">
-        <form>
-            <h2>Satic AI <span class="accent">Intern</span></h2>
-            <p class="subtitle">Submission Portal • Day 4 Polish</p>
+<div class="container">
 
-            <div class="input-group">
-                <input type="text" id="satic-id" required placeholder=" ">
-                <label for="satic-id">Satic ID</label>
-            </div>
+<h2>✨ Professional Registration</h2>
 
-            <div class="input-group">
-                <input type="text" id="name" required placeholder=" ">
-                <label for="name">Full Name</label>
-            </div>
+<form id="form">
 
-            <div class="input-group">
-                <input type="text" id="project-title" required placeholder=" ">
-                <label for="project-title">Project Title</label>
-            </div>
+<div class="input-group">
+<label>Full Name *</label>
+<input type="text" id="name" required>
+</div>
 
-            <div class="input-group">
-                <input type="url" id="github-link" required placeholder=" ">
-                <label for="github-link">GitHub Repository URL</label>
-            </div>
+<div class="input-group">
+<label>Email *</label>
+<input type="email" id="email" required>
+<span class="error" id="emailError">Invalid Email</span>
+</div>
 
-            <button type="submit" class="submit-btn">Submit Project</button>
-        </form>
-    </div>
+<div class="input-group">
+<label>Phone *</label>
+<input type="tel" id="phone" required>
+</div>
+
+<div class="input-group">
+<label>Gender *</label>
+<select required>
+<option value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Country *</label>
+<select required>
+<option>India</option>
+<option>USA</option>
+<option>UK</option>
+<option>Canada</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Password *</label>
+<input type="password" id="password" required>
+<span class="eye" onclick="togglePass()">👁️</span>
+
+<div class="strength"><div class="bar" id="bar"></div></div>
+</div>
+
+<div class="input-group">
+<label>Confirm Password *</label>
+<input type="password" id="confirm" required>
+<span class="error" id="passError">Passwords not matching</span>
+</div>
+
+<div class="checkbox">
+<input type="checkbox" id="terms" required>
+<label>I agree to Terms & Conditions</label>
+</div>
+
+<div class="buttons">
+<button type="submit" class="submit">🚀 Submit</button>
+<button type="reset" class="reset">♻️ Reset</button>
+</div>
+
+</form>
+
+<button class="darkbtn" onclick="darkMode()">🌙 Dark Mode</button>
+
+<div class="success" id="success">✅ Form Submitted Successfully!</div>
+
+</div>
+
+<script>
+function togglePass(){
+let p=document.getElementById("password");
+p.type=p.type==="password"?"text":"password";
+}
+
+function darkMode(){
+document.body.classList.toggle("dark");
+}
+
+const pass=document.getElementById("password");
+const bar=document.getElementById("bar");
+
+pass.addEventListener("input",()=>{
+let v=pass.value.length;
+if(v<4){bar.style.width="30%";bar.style.background="red";}
+else if(v<8){bar.style.width="60%";bar.style.background="orange";}
+else{bar.style.width="100%";bar.style.background="green";}
+});
+
+document.getElementById("form").addEventListener("submit",function(e){
+e.preventDefault();
+
+let email=document.getElementById("email");
+let confirm=document.getElementById("confirm");
+let passError=document.getElementById("passError");
+let emailError=document.getElementById("emailError");
+
+emailError.style.display=email.checkValidity()?"none":"block";
+
+if(pass.value!==confirm.value){
+passError.style.display="block";
+return;
+}else{
+passError.style.display="none";
+}
+
+document.getElementById("success").style.display="block";
+this.reset();
+bar.style.width="0%";
+});
+</script>
 
 </body>
 </html>
