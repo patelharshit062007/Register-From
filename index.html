@@ -1,162 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Registration</title>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #87CEEB, #ffffff);
-}
-
-/* Container */
-.container {
-  width: 350px;
-  padding: 25px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-/* Dark Mode Button */
-.toggle-btn {
-  background: #0d1b2a;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 25px;
-  width: 100%;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-
-/* Title */
-h2 {
-  margin-bottom: 20px;
-  color: #0d1b2a;
-}
-
-/* Input Fields */
-.input-box {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.input-box input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: #f1f9ff;
-  font-size: 14px;
-}
-
-/* Eye Button */
-.input-box span {
-  position: absolute;
-  right: 10px;
-  top: 12px;
-  cursor: pointer;
-}
-
-/* Buttons */
-.btn-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.btn {
-  width: 48%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-/* Register Button */
-.register {
-  background: linear-gradient(135deg, #00b4db, #0083b0);
-  color: white;
-}
-
-/* Reset Button */
-.reset {
-  background: #0d1b2a;
-  color: white;
-}
-
-/* DARK MODE */
-.dark {
-  background: #0d1b2a;
-}
-
-.dark .container {
-  background: #1b263b;
-  color: white;
-}
-
-.dark input {
-  background: #415a77;
-  color: white;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
-  <button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+  <form class="form-box" id="form">
 
-  <h2>✨ Premium Registration</h2>
+    <h1>Register Now</h1>
 
-  <div class="input-box">
-    <input type="text" placeholder="Full Name">
-  </div>
+    <!-- Name -->
+    <div class="input-box">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+      <small></small>
+    </div>
 
-  <div class="input-box">
-    <input type="email" placeholder="Email">
-  </div>
+    <!-- Email -->
+    <div class="input-box">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <small></small>
+    </div>
 
-  <div class="input-box">
-    <input type="password" id="password" placeholder="Password">
-    <span onclick="togglePassword()">👁️</span>
-  </div>
+    <!-- Password -->
+    <div class="input-box">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter password" required>
+      <small></small>
+    </div>
 
-  <div class="input-box">
-    <input type="text" placeholder="Phone Number">
-  </div>
+    <!-- Gender -->
+    <div class="input-group">
+      <p>Gender</p>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" required> Male</label>
+        <label><input type="radio" name="gender"> Female</label>
+        <label><input type="radio" name="gender"> Other</label>
+      </div>
+    </div>
 
-  <div class="btn-group">
-    <button class="btn register">🚀 Register</button>
-    <button class="btn reset">🔄 Reset</button>
-  </div>
+    <!-- Course -->
+    <div class="input-box">
+      <label>Course / Interest</label>
+      <select id="course" required>
+        <option value="">Select your interest</option>
+        <option>Web Development</option>
+        <option>AI / Machine Learning</option>
+        <option>Data Science</option>
+        <option>UI / UX Design</option>
+      </select>
+      <small></small>
+    </div>
+
+   <div class="button-group">
+  <button type="submit" class="submit-btn">Register Now</button>
+  <button type="reset" class="reset-btn">Reset</button>
+</div>
+
+  </form>
 </div>
 
 <script>
-function togglePassword() {
-  let pass = document.getElementById("password");
-  pass.type = pass.type === "password" ? "text" : "password";
+const form = document.getElementById("form");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let valid = true;
+
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const course = document.getElementById("course");
+
+  if (name.value.trim() === "") {
+    setError(name, "Enter your full name");
+    valid = false;
+  } else {
+    setSuccess(name);
+  }
+
+  if (!email.value.includes("@")) {
+    setError(email, "Enter valid email");
+    valid = false;
+  } else {
+    setSuccess(email);
+  }
+
+  if (password.value.length < 6) {
+    setError(password, "Minimum 6 characters");
+    valid = false;
+  } else {
+    setSuccess(password);
+  }
+
+  if (course.value === "") {
+    setError(course, "Select a course");
+    valid = false;
+  } else {
+    setSuccess(course);
+  }
+
+  if (valid) {
+    alert("Form submitted successfully!");
+    form.reset();
+  }
+});
+
+function setError(input, message) {
+  const box = input.parentElement;
+  const small = box.querySelector("small");
+  small.innerText = message;
+  small.style.color = "red";
 }
 
-function toggleMode() {
-  document.body.classList.toggle("dark");
+function setSuccess(input) {
+  const box = input.parentElement;
+  const small = box.querySelector("small");
+  small.innerText = "";
 }
 </script>
 
