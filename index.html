@@ -1,230 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Registration | Day 4 Polish</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satic AI - Premium Submission Form</title>
+    
+    <!-- Premium CSS Styles (Merged) -->
+    <style>
+        /* 1. Global Reset & Premium Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(circle at top left, #1e293b, #080c14);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f8fafc;
+            overflow: hidden;
+        }
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+        /* 2. Glassmorphism Form Container (Task Step 4 & 6) */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #87CEEB, #ffffff);
-  transition: background 0.5s ease; /* Smooth background shift for Dark Mode */
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* Container */
-.container {
-  width: 380px; /* Slightly wider for better spacing */
-  padding: 40px 30px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s ease, background 0.4s ease;
-}
+        h2 { margin-bottom: 8px; font-weight: 700; letter-spacing: -0.5px; }
+        .accent { color: #10b981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+        .subtitle { color: #94a3b8; font-size: 0.9rem; margin-bottom: 32px; opacity: 0.8; }
 
-/* Visual Hierarchy: More visible heading */
-h2 {
-  margin-bottom: 30px;
-  color: #0d1b2a;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
+        /* 3. Input Visual Effects (Task Step 2 & 5) */
+        .input-group {
+            position: relative;
+            margin-bottom: 24px;
+            text-align: left;
+        }
 
-/* Dark Mode Toggle Button */
-.toggle-btn {
-  background: #0d1b2a;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+        .input-group input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 1rem;
+            color: #fff;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth Transition */
+        }
 
-.toggle-btn:hover {
-  background: #415a77;
-  transform: translateY(-2px);
-}
+        /* Focus & Polish Highlights (Step 2) */
+        .input-group input:focus {
+            border-bottom-color: #10b981;
+        }
 
-/* Input Fields & Visual Polish */
-.input-box {
-  position: relative;
-  margin-bottom: 20px; /* Improved spacing */
-}
+        .input-group label {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            color: #64748b;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
 
-.input-box input {
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: 12px;
-  border: 2px solid transparent; /* Prepared for focus border */
-  outline: none;
-  background: #f1f9ff;
-  font-size: 14px;
-  color: #333;
-  transition: all 0.3s ease; /* Smooth transition for effects */
-}
+        /* Floating Label Animation */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label {
+            top: -14px;
+            font-size: 0.75rem;
+            color: #10b981;
+            font-weight: 600;
+        }
 
-/* Day 4 Task: Input Effects on Focus */
-.input-box input:focus {
-  background: #ffffff;
-  border-color: #00b4db;
-  box-shadow: 0 0 12px rgba(0, 180, 219, 0.2);
-}
+        /* 4. Button Hover & Scale Effects (Task Step 3) */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 12px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy transition */
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
 
-/* Password Eye Icon */
-.input-box span {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
+        .submit-btn:hover {
+            transform: scale(1.03); /* Slight scale (Step 3) */
+            box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4); /* Shadow change (Step 3) */
+            filter: brightness(1.1);
+        }
 
-.input-box span:hover {
-  opacity: 1;
-}
-
-/* Buttons Group */
-.btn-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
-}
-
-.btn {
-  width: 48%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added a slight bounce */
-}
-
-/* Register Button - Day 4 Hover Effects */
-.register {
-  background: linear-gradient(135deg, #00b4db, #0083b0);
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
-}
-
-.register:hover {
-  transform: scale(1.05); /* Slight scale */
-  box-shadow: 0 8px 20px rgba(0, 180, 219, 0.4); /* Deeper shadow */
-  filter: brightness(1.1);
-}
-
-/* Reset Button */
-.reset {
-  background: #0d1b2a;
-  color: white;
-}
-
-.reset:hover {
-  background: #1b263b;
-  transform: translateY(-2px);
-}
-
-/* DARK MODE OVERRIDES */
-.dark {
-  background: #0b0d17;
-}
-
-.dark .container {
-  background: #1b263b;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-}
-
-.dark h2, .dark .toggle-btn {
-  color: white;
-}
-
-.dark .input-box input {
-  background: #415a77;
-  color: white;
-}
-
-.dark .input-box input::placeholder {
-  color: #ccc;
-}
-
-.dark .input-box input:focus {
-  background: #4e6a8e;
-  border-color: #00b4db;
-}
-</style>
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-  <button class="toggle-btn" onclick="toggleMode()" id="modeToggle">🌙 Dark Mode</button>
+    <div class="glass-container">
+        <form>
+            <h2>Satic AI <span class="accent">Intern</span></h2>
+            <p class="subtitle">Submission Portal • Day 4 Polish</p>
 
-  <h2>✨ Premium Registration</h2>
+            <div class="input-group">
+                <input type="text" id="satic-id" required placeholder=" ">
+                <label for="satic-id">Satic ID</label>
+            </div>
 
-  <div class="input-box">
-    <input type="text" placeholder="Full Name" required>
-  </div>
+            <div class="input-group">
+                <input type="text" id="name" required placeholder=" ">
+                <label for="name">Full Name</label>
+            </div>
 
-  <div class="input-box">
-    <input type="email" placeholder="Email" required>
-  </div>
+            <div class="input-group">
+                <input type="text" id="project-title" required placeholder=" ">
+                <label for="project-title">Project Title</label>
+            </div>
 
-  <div class="input-box">
-    <input type="password" id="password" placeholder="Password" required>
-    <span onclick="togglePassword()">👁️</span>
-  </div>
+            <div class="input-group">
+                <input type="url" id="github-link" required placeholder=" ">
+                <label for="github-link">GitHub Repository URL</label>
+            </div>
 
-  <div class="input-box">
-    <input type="text" placeholder="Phone Number" required>
-  </div>
-
-  <div class="btn-group">
-    <button class="btn register">🚀 Register</button>
-    <button class="btn reset" onclick="location.reload()">🔄 Reset</button>
-  </div>
-</div>
-
-<script>
-// Toggle Password Visibility
-function togglePassword() {
-  const pass = document.getElementById("password");
-  pass.type = pass.type === "password" ? "text" : "password";
-}
-
-// Dark Mode Logic
-function toggleMode() {
-  const body = document.body;
-  const btn = document.getElementById("modeToggle");
-  
-  body.classList.toggle("dark");
-  
-  if (body.classList.contains("dark")) {
-    btn.innerHTML = "☀️ Light Mode";
-  } else {
-    btn.innerHTML = "🌙 Dark Mode";
-  }
-}
-</script>
+            <button type="submit" class="submit-btn">Submit Project</button>
+        </form>
+    </div>
 
 </body>
 </html>
