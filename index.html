@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modern Premium Form</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Version 1 - Premium UI</title>
 
 <style>
 * {
@@ -15,169 +13,150 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Theme Colors */
+:root {
+  --primary: #7c3aed;
+  --secondary: #ffffff;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+}
+
 body {
-  height: 100vh;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Navbar */
+.navbar {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
 }
 
-/* Card */
-.container {
-  width: 360px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  color: white;
-  animation: fadeIn 1s ease;
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary);
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.3s;
 }
 
-.container h2 {
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
   text-align: center;
-  margin-bottom: 25px;
-  font-weight: 600;
+  padding: 80px 20px;
 }
 
-/* Input Box */
-.input-box {
-  position: relative;
-  margin-bottom: 25px;
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
 }
 
-.input-box input {
-  width: 100%;
-  padding: 12px 10px;
+.hero p {
+  opacity: 0.8;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 10px;
-  outline: none;
-  background: rgba(255,255,255,0.2);
-  color: white;
-  font-size: 14px;
-}
-
-.input-box input::placeholder {
-  color: transparent;
-}
-
-/* Floating Label */
-.input-box label {
-  position: absolute;
-  top: 12px;
-  left: 10px;
-  font-size: 14px;
-  color: #ddd;
-  transition: 0.3s;
-}
-
-.input-box input:focus + label,
-.input-box input:valid + label {
-  top: -8px;
-  left: 8px;
-  font-size: 12px;
-  background: #0072ff;
-  padding: 2px 6px;
-  border-radius: 5px;
-}
-
-/* Password Toggle */
-.toggle {
-  position: absolute;
-  right: 10px;
-  top: 12px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-/* Button */
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: white;
-  font-size: 16px;
+  background: var(--primary);
+  color: var(--secondary);
+  border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-button:hover {
+.btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+/* Cards Section */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: var(--primary);
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  margin-top: 15px;
-  font-size: 13px;
-  color: #ddd;
-}
-
-.footer a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* Responsive */
-@media(max-width: 400px) {
-  .container {
-    width: 90%;
-  }
+  padding: 20px;
+  opacity: 0.7;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="container">
-  <h2>Create Account</h2>
-
-  <form>
-    <div class="input-box">
-      <input type="text" required>
-      <label>Full Name</label>
-    </div>
-
-    <div class="input-box">
-      <input type="email" required>
-      <label>Email</label>
-    </div>
-
-    <div class="input-box">
-      <input type="password" id="password" required>
-      <label>Password</label>
-      <span class="toggle" onclick="togglePassword()">👁</span>
-    </div>
-
-    <div class="input-box">
-      <input type="tel" required>
-      <label>Phone Number</label>
-    </div>
-
-    <button type="submit">Sign Up</button>
-
-    <div class="footer">
-      Already have an account? <a href="#">Login</a>
-    </div>
-  </form>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">MyApp</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Contact</a>
+  </div>
 </div>
 
-<script>
-function togglePassword() {
-  let pass = document.getElementById("password");
-  pass.type = pass.type === "password" ? "text" : "password";
-}
-</script>
+<!-- Hero -->
+<section class="hero">
+  <h1>Welcome to Version 1 🚀</h1>
+  <p>Modern UI with premium look and smooth design</p>
+  <button class="btn">Get Started</button>
+</section>
+
+<!-- Cards -->
+<section class="cards">
+  <div class="card">
+    <h3>Fast Performance</h3>
+    <p>Optimized and smooth experience for users.</p>
+  </div>
+
+  <div class="card">
+    <h3>Modern Design</h3>
+    <p>Clean and attractive UI design.</p>
+  </div>
+
+  <div class="card">
+    <h3>Easy Customization</h3>
+    <p>Change colors and layout easily.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  © 2026 MyApp | All Rights Reserved
+</div>
 
 </body>
 </html>
