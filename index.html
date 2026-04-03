@@ -1,97 +1,73 @@
-<!-- version2.html -->
+<!-- version1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration Form - V2</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Registration Form - V1</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
       display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
-    }
-    .left {
-      flex: 1;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 28px;
-      font-weight: 600;
-    }
-    .right {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f9f9f9;
     }
     .form-container {
       background: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 350px;
     }
     h2 {
       text-align: center;
-      margin-bottom: 25px;
-      color: #2575fc;
+      margin-bottom: 20px;
+      color: #333;
     }
     label {
       display: block;
       margin: 10px 0 5px;
-      font-weight: 600;
+      font-weight: bold;
     }
     input {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     button {
       width: 100%;
-      padding: 14px;
-      background: #2575fc;
+      padding: 12px;
+      background: #4CAF50;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       font-size: 16px;
-      font-weight: 600;
       cursor: pointer;
-      transition: 0.3s;
     }
     button:hover {
-      background: #1a5edb;
+      background: #45a049;
     }
   </style>
 </head>
 <body>
-  <div class="left">
-    Welcome to SATIC AI
-  </div>
-  <div class="right">
-    <div class="form-container">
-      <h2>Create Account</h2>
-      <form>
-        <label for="name">Full Name</label>
-        <input type="text" id="name" required>
+  <div class="form-container">
+    <h2>Register</h2>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
 
-        <button type="submit">Register</button>
-      </form>
-    </div>
+      <button type="submit">Sign Up</button>
+    </form>
   </div>
 </body>
 </html>
