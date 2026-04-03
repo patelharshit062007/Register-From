@@ -1,4 +1,3 @@
-<!-- version1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,48 +7,54 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f9;
+      background: skyblue;
+      color: black;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
     .form-container {
-      background: #fff;
+      background: white;
       padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       width: 350px;
     }
     h2 {
       text-align: center;
-      margin-bottom: 20px;
-      color: #333;
+      color: black;
     }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-      font-weight: bold;
-    }
-    input {
+    input, select, button {
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
+      margin: 8px 0;
+      border: 1px solid black;
       border-radius: 5px;
     }
+    .password-container {
+      display: flex;
+      align-items: center;
+    }
+    .password-container input {
+      flex: 1;
+    }
+    .password-container span {
+      cursor: pointer;
+      margin-left: 8px;
+      color: skyblue;
+      font-weight: bold;
+    }
     button {
-      width: 100%;
-      padding: 12px;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      background: black;
+      color: skyblue;
+      font-weight: bold;
       cursor: pointer;
     }
     button:hover {
-      background: #45a049;
+      background: skyblue;
+      color: black;
     }
   </style>
 </head>
@@ -57,17 +62,41 @@
   <div class="form-container">
     <h2>Register</h2>
     <form>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
-
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-
-      <button type="submit">Sign Up</button>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      
+      <!-- Gender -->
+      <select required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      
+      <!-- Course -->
+      <select required>
+        <option value="">Select Course</option>
+        <option>Frontend Development</option>
+        <option>Backend Development</option>
+        <option>Data Science</option>
+        <option>AI & ML</option>
+      </select>
+      
+      <!-- Password with eye toggle -->
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Password" required>
+        <span onclick="togglePassword()">👁</span>
+      </div>
+      
+      <button type="submit">Submit</button>
     </form>
   </div>
+
+  <script>
+    function togglePassword() {
+      const pass = document.getElementById("password");
+      pass.type = pass.type === "password" ? "text" : "password";
+    }
+  </script>
 </body>
 </html>
