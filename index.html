@@ -1,199 +1,97 @@
+<!-- version2.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Purple Premium Form</title>
-
-<link rel="stylesheet" href="style2.css">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form - V2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    .left {
+      flex: 1;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    .right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
+    }
+    .form-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2575fc;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #2575fc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #1a5edb;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="left">
+    Welcome to SATIC AI
+  </div>
+  <div class="right">
+    <div class="form-container">
+      <h2>Create Account</h2>
+      <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
 
-<div class="container">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
 
-    <h2>💜 Create Account</h2>
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
 
-    <form>
-
-        <div class="input-box">
-            <input type="text" required>
-            <label>Full Name</label>
-        </div>
-
-        <div class="input-box">
-            <input type="email" required>
-            <label>Email Address</label>
-        </div>
-
-        <div class="input-box">
-            <input type="password" required>
-            <label>Password</label>
-        </div>
-
-        <div class="input-box">
-            <select required>
-                <option value=""></option>
-                <option>India</option>
-                <option>USA</option>
-                <option>UK</option>
-                <option>Canada</option>
-            </select>
-            <label>Select Country</label>
-        </div>
-
-        <div class="input-box">
-            <input type="tel" required>
-            <label>Phone Number</label>
-        </div>
-
-        <div class="btn-group">
-            <button class="btn register">Register</button>
-            <button class="btn reset" type="reset">Reset</button>
-        </div>
-
-    </form>
-
-</div>
-<script>    
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Background */
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: linear-gradient(135deg, #3a0ca3, #7209b7, #b5179e);
-}
-
-/* Glass Container */
-.container {
-  width: 360px;
-  padding: 30px;
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(25px);
-
-  border: 2px solid rgba(255, 255, 255, 0.2);
-
-  box-shadow: 0 0 40px rgba(183, 23, 158, 0.4);
-  text-align: center;
-}
-
-/* Heading */
-h2 {
-  color: white;
-  margin-bottom: 25px;
-}
-
-/* Input Box */
-.input-box {
-  position: relative;
-  margin-bottom: 25px;
-}
-
-/* Inputs & Select */
-.input-box input,
-.input-box select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-
-  color: white;
-  outline: none;
-  font-size: 14px;
-
-  transition: 0.3s;
-}
-
-/* Neon Border Effect */
-.input-box input:focus,
-.input-box select:focus {
-  border-color: #c77dff;
-  box-shadow: 0 0 10px #c77dff;
-}
-
-/* Floating Labels */
-.input-box label {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  color: #ddd;
-  font-size: 14px;
-  pointer-events: none;
-  transition: 0.3s;
-  background: transparent;
-}
-
-/* Move label on focus */
-.input-box input:focus + label,
-.input-box input:valid + label,
-.input-box select:focus + label,
-.input-box select:valid + label {
-  top: -10px;
-  left: 10px;
-  font-size: 11px;
-  color: #c77dff;
-  background: #3a0ca3;
-  padding: 0 5px;
-  border-radius: 5px;
-}
-
-/* Button Group */
-.btn-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Buttons */
-.btn {
-  width: 48%;
-  padding: 12px;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-/* Register Button */
-.register {
-  background: linear-gradient(135deg, #c77dff, #7b2cbf);
-  color: white;
-  box-shadow: 0 0 10px #c77dff;
-}
-
-.register:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #c77dff;
-}
-
-/* Reset Button */
-.reset {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-}
-
-.reset:hover {
-  background: white;
-  color: #3a0ca3;
-}
-</script>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
