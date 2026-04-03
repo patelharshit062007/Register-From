@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Registration Form</title>
+<title>Purple Premium Form</title>
+
 <link rel="stylesheet" href="style.css">
 
 <!-- Google Font -->
@@ -14,60 +15,65 @@
 
 <div class="container">
 
-    <h2>✨ Registration Form</h2>
+    <h2>💜 Create Account</h2>
 
     <form>
 
         <div class="input-box">
-            <input type="text" placeholder="Full Name" required>
+            <input type="text" required>
+            <label>Full Name</label>
         </div>
 
         <div class="input-box">
-            <input type="email" placeholder="Email" required>
+            <input type="email" required>
+            <label>Email Address</label>
         </div>
 
         <div class="input-box">
-            <input type="password" placeholder="Password" required>
+            <input type="password" required>
+            <label>Password</label>
         </div>
 
         <div class="input-box">
             <select required>
-                <option value="">Select Country</option>
+                <option value=""></option>
                 <option>India</option>
                 <option>USA</option>
                 <option>UK</option>
                 <option>Canada</option>
-                <option>Australia</option>
             </select>
+            <label>Select Country</label>
         </div>
 
         <div class="input-box">
-            <input type="tel" placeholder="Phone Number" required>
+            <input type="tel" required>
+            <label>Phone Number</label>
         </div>
 
         <div class="btn-group">
-            <button class="btn register">🚀 Register</button>
-            <button class="btn reset" type="reset">🔄 Reset</button>
+            <button class="btn register">Register</button>
+            <button class="btn reset" type="reset">Reset</button>
         </div>
 
     </form>
 
 </div>
-<style>    
+<script>    
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+/* Background */
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* Premium Purple Gradient */
- background: linear-gradient(135deg, #5f2c82, #9c27b0, #673ab7);
+  background: linear-gradient(135deg, #3a0ca3, #7209b7, #b5179e);
 }
 
 /* Glass Container */
@@ -76,62 +82,89 @@ body {
   padding: 30px;
   border-radius: 20px;
 
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
 
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 0 40px rgba(183, 23, 158, 0.4);
   text-align: center;
-  transition: 0.3s;
-}
-
-.container:hover {
-  transform: scale(1.02);
 }
 
 /* Heading */
 h2 {
-  margin-bottom: 20px;
-  color: #fff;
-  font-weight: 600;
+  color: white;
+  margin-bottom: 25px;
 }
 
-/* Input Fields */
+/* Input Box */
 .input-box {
-  margin-bottom: 15px;
+  position: relative;
+  margin-bottom: 25px;
 }
 
+/* Inputs & Select */
 .input-box input,
 .input-box select {
   width: 100%;
   padding: 12px;
   border-radius: 12px;
-  border: none;
-  outline: none;
 
-  background: rgba(255, 255, 255, 0.9);
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+
+  color: white;
+  outline: none;
   font-size: 14px;
 
   transition: 0.3s;
 }
 
+/* Neon Border Effect */
 .input-box input:focus,
 .input-box select:focus {
-  box-shadow: 0 0 10px #c084fc;
-  transform: scale(1.02);
+  border-color: #c77dff;
+  box-shadow: 0 0 10px #c77dff;
 }
 
-/* Buttons */
+/* Floating Labels */
+.input-box label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #ddd;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s;
+  background: transparent;
+}
+
+/* Move label on focus */
+.input-box input:focus + label,
+.input-box input:valid + label,
+.input-box select:focus + label,
+.input-box select:valid + label {
+  top: -10px;
+  left: 10px;
+  font-size: 11px;
+  color: #c77dff;
+  background: #3a0ca3;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+/* Button Group */
 .btn-group {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
 }
 
+/* Buttons */
 .btn {
   width: 48%;
   padding: 12px;
-  border: none;
   border-radius: 25px;
+  border: none;
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s;
@@ -139,25 +172,27 @@ h2 {
 
 /* Register Button */
 .register {
-  background: linear-gradient(135deg, #c084fc, #7c3aed);
+  background: linear-gradient(135deg, #c77dff, #7b2cbf);
   color: white;
+  box-shadow: 0 0 10px #c77dff;
 }
 
 .register:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #c77dff;
 }
 
 /* Reset Button */
 .reset {
-  background: #2d1b69;
+  background: transparent;
+  border: 2px solid white;
   color: white;
 }
 
 .reset:hover {
-  background: #1a0f3d;
-  transform: translateY(-2px);
+  background: white;
+  color: #3a0ca3;
 }
-</style>
+</script>
 </body>
 </html>
