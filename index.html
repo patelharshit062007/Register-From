@@ -4,54 +4,157 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Premium Registration Form</title>
-<link rel="stylesheet" href="style.css">
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+}
+
+/* Form Container */
+.container {
+  width: 350px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Heading */
+.container h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Input Fields */
+.input-box {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Placeholder */
+input::placeholder {
+  color: #ccc;
+}
+
+/* Dropdown text */
+select {
+  color: #fff;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  width: 48%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Register Button */
+.register {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+}
+
+.register:hover {
+  background: #ddd;
+}
+
+/* Reset Button */
+.reset {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.reset:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Focus Effect */
+input:focus, select:focus {
+  box-shadow: 0 0 5px #fff;
+}
+</style>
+
 </head>
 
 <body>
 
 <div class="container">
+  <h2>✨ Registration Form</h2>
 
-    <h2>✨ Registration Form</h2>
+  <form>
+    <div class="input-box">
+      <input type="text" placeholder="Full Name" required>
+    </div>
 
-    <form>
+    <div class="input-box">
+      <input type="email" placeholder="Email" required>
+    </div>
 
-        <div class="input-box">
-            <input type="text" placeholder="Full Name" required>
-        </div>
+    <div class="input-box">
+      <input type="password" placeholder="Password" required>
+    </div>
 
-        <div class="input-box">
-            <input type="email" placeholder="Email" required>
-        </div>
+    <div class="input-box">
+      <select required>
+        <option value="">Select Country</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Canada</option>
+      </select>
+    </div>
 
-        <div class="input-box">
-            <input type="password" placeholder="Password" required>
-        </div>
+    <div class="input-box">
+      <input type="tel" placeholder="Phone Number" required>
+    </div>
 
-        <div class="input-box">
-            <select required>
-                <option value="">Select Country</option>
-                <option>India</option>
-                <option>USA</option>
-                <option>UK</option>
-                <option>Canada</option>
-                <option>Australia</option>
-            </select>
-        </div>
-
-        <div class="input-box">
-            <input type="tel" placeholder="Phone Number" required>
-        </div>
-
-        <div class="btn-group">
-            <button class="btn register">🚀 Register</button>
-            <button class="btn reset" type="reset">🔄 Reset</button>
-        </div>
-
-    </form>
-
+    <div class="buttons">
+      <button type="submit" class="register">🚀 Register</button>
+      <button type="reset" class="reset">🔄 Reset</button>
+    </div>
+  </form>
 </div>
 
 </body>
